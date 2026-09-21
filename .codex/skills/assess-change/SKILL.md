@@ -20,7 +20,15 @@ Decide independently whether the change requires:
 - an HLD;
 - an Implementation Plan.
 
-Do not create a separate assessment document. Record the concise decision and rationale in the Issue, an Issue comment, or the first required change artifact according to the repository workflow.
+Do not create a separate assessment document. Update the originating Issue's `Development Lifecycle Assessment` section, replacing its initial `Pending` values with the assessment outcome and concise rationale.
+
+Record:
+
+- HLD: `Required` or `Not required`, with rationale;
+- Implementation Plan: `Required` or `Not required`, with rationale;
+- LLD: `Deferred to Implementation Plan` when a Plan is required, otherwise `Not applicable`;
+- material risks;
+- the exact next lifecycle step.
 
 Require an HLD only when a material design decision must be resolved before implementation, such as significant product behaviour, durable architecture, interface/integration, data/state, cross-component, security, reliability, performance, cost, compatibility, or competing-design implications.
 
@@ -28,10 +36,10 @@ Require an Implementation Plan when repository-level sequencing, coordination, m
 
 Do not infer required artifact depth from the `feature` or `bug` label. A small feature may need no design artifact; a difficult bug may need both HLD and Plan.
 
-LLD remains a decision made by an approved Implementation Plan. The assessment may flag likely file-level complexity but must not bypass that decision point.
+LLD remains a decision made by an approved Implementation Plan. The assessment must not make that downstream decision; it records `Deferred to Implementation Plan` when a Plan is required.
 
 If the Issue itself is not ready, return to Issue refinement rather than compensating for missing requirements with design assumptions.
 
 ## Completion contract
 
-Report the Issue, readiness state, HLD decision and rationale, Implementation Plan decision and rationale, likely durable Product/Architecture impact, material risks/dependencies, and the exact next lifecycle step.
+Report the Issue, readiness state, HLD decision and rationale, Implementation Plan decision and rationale, LLD status, likely durable Product/Architecture impact, material risks/dependencies, and the exact next lifecycle step. Confirm that the Issue's `Development Lifecycle Assessment` section has been updated when write access is available.

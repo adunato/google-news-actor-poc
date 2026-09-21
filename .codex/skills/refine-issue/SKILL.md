@@ -28,6 +28,8 @@ Keep the Issue behavioural and implementation-independent. Do not choose archite
 
 One Issue should represent one independently deliverable outcome. If the request contains materially separable outcomes, identify the split rather than hiding multiple changes inside one Issue.
 
+Preserve the template's `Development Lifecycle Assessment` section with its initial `Pending` values. Issue refinement does not perform the change assessment; the `assess-change` step populates that section afterwards.
+
 If refinement exposes an unresolved product decision, architecture ambiguity, missing dependency, or acceptance criterion that cannot yet be made observable, report the Issue as not ready rather than inventing the answer.
 
 The skill may create or update the GitHub Issue when authorized. Otherwise return the complete proposed Issue content and readiness findings.
