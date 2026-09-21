@@ -16,3 +16,15 @@
 ## Dependencies
 
 <GitHub Issue references that must be completed first, or None.>
+
+## Development Lifecycle Assessment
+
+> Populated by the `assess-change` step after Issue refinement. Leave as `Pending` when the Issue is created.
+
+- **HLD:** Pending
+  - **Rationale:** Pending
+- **Implementation Plan:** Pending
+  - **Rationale:** Pending
+- **LLD:** Pending
+- **Material risks:** Pending
+- **Next lifecycle step:** Pending
