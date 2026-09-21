@@ -6,7 +6,7 @@ on:
     branches: [dev, staging, main]
     types: [opened, synchronize, reopened, ready_for_review]
   push:
-    branches: [dev]
+    branches: ["**"]
 
 permissions:
   contents: read
