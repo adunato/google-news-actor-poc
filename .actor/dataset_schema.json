@@ -1,0 +1,112 @@
+{
+  "actorSpecification": 1,
+  "title": "Google News metadata results",
+  "description": "Normalized Google News metadata records produced by later Actor stages.",
+  "fields": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "title": "Query",
+        "description": "The normalized query that produced this result."
+      },
+      "title": {
+        "type": "string",
+        "title": "Title",
+        "description": "The Google News result title."
+      },
+      "sourceName": {
+        "type": "string",
+        "title": "Source name",
+        "description": "The publisher/source name reported by Google News."
+      },
+      "googleNewsUrl": {
+        "type": "string",
+        "title": "Google News URL",
+        "description": "The Google News result URL, not a canonical publisher URL.",
+        "format": "uri"
+      },
+      "publishedAt": {
+        "type": "string",
+        "title": "Published at",
+        "description": "The source publication timestamp as provided by Google News.",
+        "format": "date-time"
+      },
+      "position": {
+        "type": "integer",
+        "title": "Position",
+        "description": "The result position within the query result set.",
+        "minimum": 1
+      },
+      "language": {
+        "type": "string",
+        "title": "Language",
+        "description": "The language/locale used for the query."
+      },
+      "country": {
+        "type": "string",
+        "title": "Country",
+        "description": "The country/edition used for the query."
+      },
+      "scrapedAt": {
+        "type": "string",
+        "title": "Scraped at",
+        "description": "The timestamp when the metadata was collected.",
+        "format": "date-time"
+      },
+      "sourceUrl": {
+        "type": "string",
+        "title": "Source URL",
+        "description": "Optional source URL when available from the metadata feed.",
+        "format": "uri"
+      },
+      "descriptionText": {
+        "type": "string",
+        "title": "Description",
+        "description": "Optional result description when available."
+      },
+      "guid": {
+        "type": "string",
+        "title": "GUID",
+        "description": "Optional source feed identifier when available."
+      }
+    },
+    "required": [
+      "query",
+      "title",
+      "sourceName",
+      "googleNewsUrl",
+      "publishedAt",
+      "position",
+      "language",
+      "country",
+      "scrapedAt"
+    ],
+    "additionalProperties": false
+  },
+  "views": {
+    "overview": {
+      "title": "Google News results",
+      "transformation": {
+        "fields": [
+          "query",
+          "title",
+          "sourceName",
+          "googleNewsUrl",
+          "publishedAt",
+          "position",
+          "language",
+          "country",
+          "scrapedAt",
+          "sourceUrl",
+          "descriptionText",
+          "guid"
+        ]
+      },
+      "display": {
+        "component": "table"
+      }
+    }
+  }
+}
