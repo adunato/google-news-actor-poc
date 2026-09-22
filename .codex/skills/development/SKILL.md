@@ -20,3 +20,6 @@ Run the relevant local integrity checks and distinguish implementation-caused fa
 ## Completion report contract
 
 Report the Issue reference, implementation summary, changed areas, change-artifact deviations and reasons, durable-document updates, tests added/changed, integrity checks and results, and known unrelated failures. Development is complete only when the approved scope is implemented and ready for validation.
+## Learning checkpoint
+
+Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

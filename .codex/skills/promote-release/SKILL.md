@@ -38,3 +38,6 @@ Use CI Diagnostics for failed automated promotion/deployment checks where diagno
 ## Completion contract
 
 Report the version, staging evidence used, production-promotion PR, human merge state, tag and GitHub Release, production deployment result, smoke/health result, release-fix reconciliation state, release-branch cleanup, milestone state, and any remaining human action or blocker.
+## Learning checkpoint
+
+Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.
