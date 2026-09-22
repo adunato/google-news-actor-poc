@@ -24,7 +24,7 @@ Canonical project-local templates used by those skills are installed under:
 
 `.codex/templates/`
 
-Use the relevant skill instead of recreating lifecycle behaviour ad hoc. The installed package covers repository bootstrap, durable product/architecture definition, Issue refinement, proportional change assessment, workspace/design/planning, development, validation, CI diagnosis, integration, release preparation, staging validation and production promotion.
+Use the relevant skill instead of recreating lifecycle behaviour ad hoc. The installed package covers repository bootstrap, durable product/architecture definition, Issue refinement, proportional change assessment, workspace/design/planning, development, validation, CI diagnosis, integration, release preparation, staging validation, production promotion and learning capture.
 
 ## Development lifecycle
 
@@ -43,6 +43,12 @@ When required, store these under:
 Use the canonical copies in `.codex/templates/` when creating those artifacts.
 
 Update `docs/product.md` or `docs/architecture.md` in the same change when the implemented outcome materially changes the durable product or architecture.
+
+## Learning capture
+
+Every lifecycle skill performs a lightweight learning checkpoint. Record only reusable lessons, not ordinary defects or one-off execution problems. When a learning exists, use `capture-learning` and store it under `docs/learnings/`; otherwise report `Learnings: None`.
+
+Product-specific lessons may be resolved through normal local artifacts and changes. Lessons marked for SideGig review are evidence for a separate cross-project review; do not recreate or modify SideGig standards inside this repository.
 
 ## Git and integration
 
