@@ -1,23 +1,37 @@
 ---
 name: merge-change
-description: Prepare a validated change for integration through the repository's GitHub Delivery Model and safely conclude workspace state.
+description: Prepare a validated change for integration through the repository's GitHub Delivery Model, including mandatory branch push and pull-request preparation, and safely conclude workspace state.
 ---
 
 # Merge Change
 
 Use this skill only after validation is complete.
 
-Confirm the originating GitHub Issue, change branch/worktree, target branch, intended commits, required change artifacts, durable Product/Architecture updates, validation evidence, and unrelated local changes.
+Confirm the originating GitHub Issue, change branch/worktree, target branch, intended commits, required change artifacts, durable Product/Architecture updates, validation evidence, captured learning records, and unrelated local changes.
 
-Follow the GitHub Delivery Model. Normal changes are integrated through a pull request to `dev`; release fixes target the active release branch. Ensure the pull request references the Issue and summarizes the implemented outcome, relevant design/planning artifacts, validation evidence, and any durable-document updates.
+Before integration preparation, complete the learning checkpoint. For every learning record marked `SideGig review: Yes`, verify that it satisfies the portable context contract defined by `capture-learning`: repository-qualified Learning ID, origin repository, stable source, lifecycle context, self-contained change context, evidence, impact, local action, cross-project relevance, and stable local references. Do not leave a SideGig-review learning dependent on unstated pull-request context.
 
-Do not bypass required CI, branch protection, or explicit human merge/promotion decisions. A coding agent may prepare or update the pull request but must not claim that an unmerged pull request is integrated.
+Follow the GitHub Delivery Model. Normal changes target `dev`; release fixes target the active release branch.
 
-After a human-approved merge is confirmed, verify the target state and remove the obsolete change worktree/branch only when safe. Preserve uncommitted or unintegrated work.
+After the validated change is ready:
+
+1. commit all intended in-scope changes, including durable documentation and learning records;
+2. push the source branch to GitHub;
+3. create a pull request when one does not already exist, or update the existing pull request when it does;
+4. ensure the pull request references the originating Issue and summarizes the implemented outcome, relevant design/planning artifacts, validation evidence, durable-document updates, and captured learning records;
+5. explicitly identify learning records marked `SideGig review: Yes` in the pull-request body;
+6. confirm the required CI/validation state and report the pull request as ready for the explicit human merge decision.
+
+Do not stop after committing or pushing when no pull request exists. Pull-request preparation is a required part of normal change closure.
+
+Do not bypass required CI, branch protection, or explicit human merge/promotion decisions. A coding agent prepares or updates the pull request but does not merge or promote its own change and must not claim that an unmerged pull request is integrated.
+
+After a human-approved merge is confirmed, verify the target state and remove the obsolete change worktree/branch only when safe. Preserve uncommitted or unintegrated work. SideGig-review learning records are collected centrally after integration; the product-repository agent must not copy them into or modify the SideGig repository itself.
 
 ## Completion report contract
 
-Report the Issue reference, source branch, target branch, pull request URL/ID, CI/validation state, integration state, durable-document updates, workspace cleanup, residual conditions, and required human action. The change is complete only when integration is confirmed according to the GitHub Delivery Model.
+Report the Issue reference, source branch, target branch, pull request URL/ID, CI/validation state, integration state, durable-document updates, learning-record paths and review flags, workspace cleanup, residual conditions, and required human action. Before merge, the expected terminal state is `PR prepared; human merge required`. The change is integrated only when the human-approved merge is confirmed according to the GitHub Delivery Model.
+
 ## Learning checkpoint
 
-Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.
+Before completing this skill, consider whether integration preparation itself exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later automated collection and SideGig review rather than changing cross-project standards from the product repository.
