@@ -1,0 +1,12 @@
+{
+  "actorSpecification": 1,
+  "name": "google-news-actor-poc",
+  "title": "Google News Actor POC",
+  "description": "Bounded Google News metadata search Actor foundation.",
+  "version": "0.1",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

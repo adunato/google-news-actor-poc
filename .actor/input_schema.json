@@ -1,0 +1,56 @@
+{
+  "title": "Google News Actor input",
+  "description": "Bounded Google News metadata-search controls.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "queries": {
+      "title": "Search queries",
+      "type": "array",
+      "description": "One to twenty non-empty Google News search expressions.",
+      "editor": "stringList",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "maxItemsPerQuery": {
+      "title": "Maximum results per query",
+      "type": "integer",
+      "description": "Maximum number of metadata records returned for each query.",
+      "default": 20,
+      "minimum": 1,
+      "maximum": 100
+    },
+    "language": {
+      "title": "Language",
+      "type": "string",
+      "description": "Google News language/locale code.",
+      "default": "en-US",
+      "minLength": 1
+    },
+    "country": {
+      "title": "Country",
+      "type": "string",
+      "description": "Google News country or edition code.",
+      "default": "US",
+      "minLength": 1
+    },
+    "dateRange": {
+      "title": "Date range",
+      "type": "string",
+      "description": "Bounded recency window applied by the later retrieval stage.",
+      "default": "7d",
+      "enum": ["any", "1h", "6h", "1d", "7d", "30d"]
+    },
+    "dedupe": {
+      "title": "Deduplicate results",
+      "type": "boolean",
+      "description": "Whether later stages should deduplicate results across queries.",
+      "default": true
+    }
+  },
+  "required": ["queries"]
+}

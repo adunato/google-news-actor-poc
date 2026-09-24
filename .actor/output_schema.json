@@ -1,0 +1,13 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Google News metadata output",
+  "description": "Normalized metadata records are delivered through the default Apify dataset.",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Google News results",
+      "description": "The default dataset containing normalized Google News metadata records.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    }
+  }
+}
