@@ -48,14 +48,17 @@ Update `docs/product.md` or `docs/architecture.md` in the same change when the i
 
 Every lifecycle skill performs a lightweight learning checkpoint. Record only reusable lessons, not ordinary defects or one-off execution problems. When a learning exists, use `capture-learning` and store it under `docs/learnings/`; otherwise report `Learnings: None`.
 
-Product-specific lessons may be resolved through normal local artifacts and changes. Lessons marked for SideGig review are evidence for a separate cross-project review; do not recreate or modify SideGig standards inside this repository.
+Learning records must be portable evidence. A reviewer outside this repository must be able to understand the originating change/activity, constraints, observation, evidence, impact, local action and cross-project relevance without reconstructing the original pull request from scratch. Follow the required context contract in `capture-learning` and `.codex/templates/learning-record.md`.
+
+Product-specific lessons may be resolved through normal local artifacts and changes. Lessons marked `SideGig review: Yes` are not copied to SideGig by the coding agent. After the product change is merged, the SideGig learning collector automatically imports eligible records into the central learning inbox and adds merge/commit provenance.
 
 ## Git and integration
 
 - Normal change branches are based on `dev`.
 - Follow the repository branch naming defined by the SideGig GitHub Delivery Model.
 - Do not push normal changes directly to `dev`, `staging` or `main`.
-- Prepare pull requests with Issue, design and validation traceability.
+- After validation, use `merge-change` to commit all intended changes, push the source branch, and create or update the pull request. Do not stop after a branch push when no pull request exists.
+- Pull requests must include Issue, design, validation, durable-document and learning-record traceability.
 - Use `ci-diagnostics` for failed automated gates rather than weakening checks.
 - Do not bypass required CI or branch protection.
 - Do not merge or promote your own change; those remain explicit human actions.
