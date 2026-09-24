@@ -50,7 +50,7 @@ Every lifecycle skill performs a lightweight learning checkpoint. Record only re
 
 Learning records must be portable evidence. A reviewer outside this repository must be able to understand the originating change/activity, constraints, observation, evidence, impact, local action and cross-project relevance without reconstructing the original pull request from scratch. Follow the required context contract in `capture-learning` and `.codex/templates/learning-record.md`.
 
-Product-specific lessons may be resolved through normal local artifacts and changes. Lessons marked `SideGig review: Yes` are not copied to SideGig by the coding agent. After the product change is merged, the SideGig learning collector automatically imports eligible records into the central learning inbox and adds merge/commit provenance.
+Product-specific lessons may be resolved through normal local artifacts and changes. Lessons marked `SideGig review: Yes` are not copied to SideGig by the coding agent. When a pull request is merged to `dev`, `.github/workflows/sidegig-learning-dispatch.yml` immediately dispatches the central SideGig collector, which imports eligible records and adds merge/commit provenance. A low-frequency central scheduled scan exists only as recovery for missed dispatches.
 
 ## Git and integration
 

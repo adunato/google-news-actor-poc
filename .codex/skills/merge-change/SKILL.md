@@ -26,7 +26,7 @@ Do not stop after committing or pushing when no pull request exists. Pull-reques
 
 Do not bypass required CI, branch protection, or explicit human merge/promotion decisions. A coding agent prepares or updates the pull request but does not merge or promote its own change and must not claim that an unmerged pull request is integrated.
 
-After a human-approved merge is confirmed, verify the target state and remove the obsolete change worktree/branch only when safe. Preserve uncommitted or unintegrated work. SideGig-review learning records are collected centrally after integration; the product-repository agent must not copy them into or modify the SideGig repository itself.
+After a human-approved merge is confirmed, verify the target state and remove the obsolete change worktree/branch only when safe. Preserve uncommitted or unintegrated work. The product repository's post-merge learning-dispatch workflow triggers central SideGig collection automatically; the product-repository agent must not copy learning records into or modify the SideGig repository itself.
 
 ## Completion report contract
 
