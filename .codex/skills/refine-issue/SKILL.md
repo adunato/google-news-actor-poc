@@ -37,3 +37,6 @@ The skill may create or update the GitHub Issue when authorized. Otherwise retur
 ## Completion contract
 
 Report the Issue number/URL or proposed Issue body, type, scope, acceptance criteria, dependencies, Product/Architecture references, any recommended split, readiness state, and unresolved decision that prevents implementation.
+## Learning checkpoint
+
+Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

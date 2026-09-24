@@ -16,3 +16,6 @@ Inspect the Issue, Product Definition, Architecture Definition, `AGENTS.md`, and
 ## Completion contract
 
 Report the Issue reference, branch, worktree, base branch, created/adopted state, conventions applied, unrelated-change safety, and any readiness blocker. The workspace is ready only when subsequent design or implementation work can proceed safely in isolation.
+## Learning checkpoint
+
+Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.
