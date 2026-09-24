@@ -1,5 +1,9 @@
 # Learning Record
 
+**Learning ID:** google-news-actor-poc--issue-2--bootstrap-formatting-gate
+
+**Origin repository:** adunato/google-news-actor-poc
+
 **Source:** GitHub Issue #2
 
 **Lifecycle stage / skill:** Validation / capture-learning
@@ -12,22 +16,61 @@
 
 **Disposition:** Captured
 
+## Change context
+
+Issue #2 established the repository foundation for an Apify Actor runtime,
+including input and output contracts and native Actor schemas. The repository
+requires `npm run validate` as its quality gate, including a formatter check
+over repository documentation, templates, configuration, and source files.
+The lesson arose when validating the change against that repository-wide gate.
+
 ## Observation
 
-Repository boilerplate and template files that are covered by the mandatory formatter must be formatter-clean when the repository is bootstrapped. Otherwise an otherwise unrelated change can fail the repository-wide quality gate.
+Canonical bootstrap, template, and configuration artifacts covered by a
+repository formatter must be generated or installed in formatter-clean form.
+Otherwise an unrelated first change inherits avoidable formatting work before
+it can satisfy the repository quality gate.
 
 ## Evidence
 
-Issue #2 implementation checks initially failed the repository `npm run validate` formatting check on 11 pre-existing files, including `README.md`, `AGENTS.md`, product and architecture documents, Issue #2 change artifacts, GitHub templates, workflow/configuration files, and `tsconfig.json`. Applying formatting-only changes made the complete validation contract pass without changing the affected documents' meaning.
+The initial Issue #2 validation run failed its formatting check on 11
+pre-existing artifacts: `README.md`, `AGENTS.md`, `docs/product.md`,
+`docs/architecture.md`, `docs/changes/2/hld.md`,
+`docs/changes/2/implementation-plan.md`, the two GitHub issue templates,
+`.github/workflows/ci.yml`, `tsconfig.json`, and `eslint.config.js`.
+Formatting-only cleanup made the complete `npm run validate` contract pass;
+the affected documents' semantic content did not change.
 
 ## Impact
 
-New changes incur unrelated cleanup work and produce avoidable validation noise when canonical boilerplate is not aligned with the repository formatter from the outset.
+Unformatted bootstrap artifacts create unrelated-change CI noise, consume
+implementation time on cleanup, and obscure whether the new change itself is
+valid. The same failure mode can recur in other repositories created from or
+updated by shared boilerplate.
 
 ## Local action
 
-Formatting-only cleanup was applied during Issue #2 validation. No additional product or shared-standard change is made by this record.
+Issue #2 validation applied formatting-only cleanup to the affected files. No
+product, architecture, or shared SideGig standard was changed by this record.
 
-## SideGig review note
+## Cross-project relevance
 
-The canonical bootstrap/template package and its formatting validation expectations may need review so generated or installed repository boilerplate is formatter-clean before the first change.
+The observation may generalize to the canonical bootstrap/template package and
+its installation or generation checks. SideGig review should consider whether
+bootstrap artifacts are formatter-clean before delivery and whether the shared
+formatting contract checks the right generated and installed surfaces. This
+repository does not prescribe or apply that cross-project change.
+
+## Stable local references
+
+- [GitHub Issue #2](https://github.com/adunato/google-news-actor-poc/issues/2)
+- `package.json` (`npm run validate`)
+- `docs/product.md`
+- `docs/architecture.md`
+- `docs/changes/2/hld.md`
+- `docs/changes/2/implementation-plan.md`
+- `.github/ISSUE_TEMPLATE/bug.md`
+- `.github/ISSUE_TEMPLATE/feature.md`
+- `.github/workflows/ci.yml`
+- `tsconfig.json`
+- `eslint.config.js`

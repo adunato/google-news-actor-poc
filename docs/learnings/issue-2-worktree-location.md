@@ -1,5 +1,9 @@
 # Learning Record
 
+**Learning ID:** google-news-actor-poc--issue-2--worktree-location
+
+**Origin repository:** adunato/google-news-actor-poc
+
 **Source:** GitHub Issue #2
 
 **Lifecycle stage / skill:** Workspace setup / capture-learning
@@ -12,22 +16,51 @@
 
 **Disposition:** Captured
 
+## Change context
+
+Issue #2 required an isolated feature workspace based on the repository's
+normal development base so implementation and validation could proceed without
+disturbing other work. The workspace setup guidance addressed branch and base
+safety but did not specify where the worktree should live on the filesystem.
+The lesson arose when adopting the clean Issue #2 workspace under the project
+root.
+
 ## Observation
 
-The change-workspace convention should explicitly define a repository-local worktree location, such as `.worktrees/<issue-slug>`, instead of leaving the location ambiguous or creating a sibling directory outside the project root.
+Change-workspace guidance should state an explicit repository-relative worktree
+location policy. A location such as `.worktrees/<issue-slug>` makes the active
+workspace discoverable and keeps its lifecycle visibly scoped to the repository.
 
 ## Evidence
 
-Issue #2's feature worktree was initially created at `C:\Users\danie\projects\google-news-actor-poc-issue-2`. The user requested that it be located under the main project at `C:\Users\danie\projects\google-news-actor-poc\.worktrees\issue-2`; the clean feature branch was subsequently adopted at that exact project-local path.
+Issue #2 initially used a sibling worktree outside the repository root. The
+clean feature workspace was subsequently relocated and adopted at the
+repository-relative path `.worktrees/issue-2`. This exposed that the existing
+workspace guidance covered isolation and branch safety but left filesystem
+placement ambiguous.
 
 ## Impact
 
-An unspecified worktree location can make related workspaces harder to discover, complicate repository-scoped access and cleanup, and create an avoidable mismatch between the project root and its active change workspace.
+Ambiguous worktree placement makes related workspaces harder to discover,
+complicates repository-scoped access and cleanup, and can create inconsistent
+operator expectations across projects. The concern is about the workspace
+convention, not the Issue #2 runtime implementation.
 
 ## Local action
 
-The Issue #2 worktree was relocated/adopted at `.worktrees/issue-2`. This record does not modify shared workspace standards.
+The Issue #2 workspace now adopts `.worktrees/issue-2`. No shared workspace
+standard was changed by this record.
 
-## SideGig review note
+## Cross-project relevance
 
-The `setup-change-workspace` guidance and related repository bootstrap conventions may need an explicit, cross-project repository-local worktree location.
+The observation may generalize to the `setup-change-workspace` skill and
+repository bootstrap conventions. SideGig review should consider documenting
+an explicit local worktree-location policy and its cleanup/access expectations.
+This record does not prescribe a cross-project standard or apply one here.
+
+## Stable local references
+
+- [GitHub Issue #2](https://github.com/adunato/google-news-actor-poc/issues/2)
+- `AGENTS.md`
+- `.codex/skills/setup-change-workspace/SKILL.md`
+- `.worktrees/issue-2`
