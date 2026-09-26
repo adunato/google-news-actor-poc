@@ -1,51 +1,103 @@
 # Google News Actor POC
 
-An Apify Actor proof of concept for discovering Google News results and returning structured article metadata for developer and research workflows.
+Search Google News with one or more expressions and collect structured metadata from the results in an Apify dataset. This proof of concept is intended for small, bounded searches and programmatic evaluation.
 
-## Status
+## Input
 
-Proof of concept — the development repository is established, but Actor implementation has not started.
+Provide an object with a `queries` array. It must contain 1 to 20 non-empty search expressions. The Actor trims surrounding whitespace from query strings.
 
-## Getting started
+| Field              | Type             | Default   | Bounds or supported values                                                   |
+| ------------------ | ---------------- | --------- | ---------------------------------------------------------------------------- |
+| `queries`          | array of strings | Required  | 1–20 non-empty expressions                                                   |
+| `maxItemsPerQuery` | integer          | `20`      | 1–100 results per query                                                      |
+| `language`         | string           | `"en-US"` | Google News language/locale code                                             |
+| `country`          | string           | `"US"`    | Google News country/edition code                                             |
+| `dateRange`        | string           | `"7d"`    | `"any"`, `"1h"`, `"6h"`, `"1d"`, `"7d"`, or `"30d"`                          |
+| `dedupe`           | boolean          | `true`    | When enabled, keeps the first result for each Google News URL across queries |
 
-### Prerequisites
+Example input:
 
-- Node.js 20 or later
-- npm 10 or later
-
-An Apify account and Actor credentials are required only when the implementation is ready for hosted execution.
-
-### Install
-
-```text
-npm ci
+```json
+{
+  "queries": ["renewable energy", "climate policy"],
+  "maxItemsPerQuery": 10,
+  "language": "en-US",
+  "country": "US",
+  "dateRange": "7d",
+  "dedupe": true
+}
 ```
 
-### Run locally
+## Output
 
-The Actor runtime is not implemented yet. Use the validation command to verify the repository baseline.
+Each result is written as a record to the run's default dataset. Required fields are:
 
-## Usage
+| Field           | Description                                      |
+| --------------- | ------------------------------------------------ |
+| `query`         | Search expression that produced the result       |
+| `title`         | Result title from Google News                    |
+| `sourceName`    | Publisher or source name reported by Google News |
+| `googleNewsUrl` | Google News result URL                           |
+| `publishedAt`   | Publication timestamp provided by Google News    |
+| `position`      | Result position within the query result set      |
+| `language`      | Language/locale used for the search              |
+| `country`       | Country/edition used for the search              |
+| `scrapedAt`     | Timestamp when the metadata was collected        |
 
-The planned POC will accept Google News query expressions, locale and recency controls, and return normalized metadata through the Apify default dataset. Its implementation is intentionally deferred to the next Step 9 activity.
+These fields are included when available in the feed:
+
+- `sourceUrl`: source URL included in the Google News feed; it is not guaranteed to be a canonical publisher URL.
+- `descriptionText`: result description.
+- `guid`: source feed identifier.
+
+The output schema and a table view are defined for the dataset. After a run, open its default dataset in Apify Console, or use the dataset items URL from the run output. For example, with the Apify API:
+
+```text
+GET https://api.apify.com/v2/datasets/{datasetId}/items?clean=true&format=json
+```
+
+Authenticate using an Apify API token in your API client. Treat tokens as secrets; do not put them in shared input examples or commit them to this repository. Apify's normal dataset exports and integrations are also available.
+
+## Limits
+
+- Results depend on Google News feed availability, ranking, and the metadata it provides. Coverage is not exhaustive and ranking is not deterministic.
+- `dateRange` is a recency filter; it does not promise complete historical coverage.
+- The Actor returns Google News result links and metadata. It does not resolve canonical publisher URLs or retrieve article bodies, images, or other page content.
+- This is a bounded single-source proof of concept, not a monitoring service or production-hardened news platform.
+
+## Local build smoke check
+
+Prerequisites: Node.js 20 or later and npm 10 or later.
+
+From a clean checkout, install the lockfile dependencies and run the package smoke check:
+
+```sh
+npm ci
+npm run actor:smoke
+```
+
+The smoke check compiles the TypeScript Actor and verifies that the entry point and files referenced by `.actor/actor.json` are present and valid JSON. This check does not contact Apify or Google News and does not require an Apify account.
+
+## Deploy to Apify
+
+To upload and build the Actor on Apify, install the Apify CLI and authenticate with an account that can create or update the Actor:
+
+The npm installation of Apify CLI requires Node.js 22 or later. The Actor itself supports Node.js 20 or later for local build checks.
+
+```sh
+npm install --global apify-cli
+apify login
+apify push
+```
+
+Run these commands from this repository directory. `apify push` uses the name and version in `.actor/actor.json`, uploads the source, and starts a platform build. Authentication is stored by the CLI in your user profile; never commit credentials. A successful build is required before a cloud run. This repository setup does not publish the Actor in the Store or configure billing.
+
+The approved temporary PoC pay-per-event proposal is $0.001 per dataset result plus the applicable Actor-start event. This is temporary PoC configuration only; it is not a production pricing commitment. Verify the Store and billing settings separately before any paid launch.
 
 ## Development
 
-Run the complete repository validation suite with:
+Run all repository checks with:
 
-```text
+```sh
 npm run validate
 ```
-
-Repository-specific agent instructions are in [AGENTS.md](AGENTS.md).
-
-## Project documentation
-
-- [Product Definition](docs/product.md) — current approved product intent, scope, capabilities and externally meaningful behaviour.
-- [Architecture Definition](docs/architecture.md) — current approved technical architecture.
-
-Change-specific HLD, Implementation Plan and LLD artifacts are stored under `docs/changes/<issue-number>/` only when the SideGig Development Lifecycle requires them.
-
-## Deployment
-
-The target deployment is an Apify Actor published through the Apify Store. Deployment and public paid observation remain later Step 9 activities; no deployment workflow is configured at bootstrap.

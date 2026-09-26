@@ -13,7 +13,8 @@
       "maxItems": 20,
       "items": {
         "type": "string",
-        "minLength": 1
+        "minLength": 1,
+        "pattern": "\\S"
       }
     },
     "maxItemsPerQuery": {
@@ -29,26 +30,28 @@
       "type": "string",
       "description": "Google News language/locale code.",
       "default": "en-US",
-      "minLength": 1
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "country": {
       "title": "Country",
       "type": "string",
       "description": "Google News country or edition code.",
       "default": "US",
-      "minLength": 1
+      "minLength": 1,
+      "pattern": "\\S"
     },
     "dateRange": {
       "title": "Date range",
       "type": "string",
-      "description": "Bounded recency window applied by the later retrieval stage.",
+      "description": "Bounded recency window applied to each Google News search.",
       "default": "7d",
       "enum": ["any", "1h", "6h", "1d", "7d", "30d"]
     },
     "dedupe": {
       "title": "Deduplicate results",
       "type": "boolean",
-      "description": "Whether later stages should deduplicate results across queries.",
+      "description": "Whether results with the same Google News URL are deduplicated across queries.",
       "default": true
     }
   },
