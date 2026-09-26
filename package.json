@@ -22,6 +22,8 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "apify": "^3.7.2"
+    "@nodable/entities": "^3.0.0",
+    "apify": "^3.7.2",
+    "fast-xml-parser": "^5.11.1"
   }
 }

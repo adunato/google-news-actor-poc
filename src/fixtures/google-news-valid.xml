@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <item>
+      <title>Climate policy reaches a new milestone - Example News</title>
+      <link>https://news.google.com/rss/articles/example-one</link>
+      <guid isPermaLink="false">example-guid-1</guid>
+      <pubDate>Sat, 26 Sep 2026 09:30:00 GMT</pubDate>
+      <description><![CDATA[<a href="https://publisher.example/story">Read the report</a><br/>Policy details &amp; analysis&#8217; &copy; &#x2019; &amp;lt;]]></description>
+      <source url="https://publisher.example">Example News</source>
+    </item>
+    <item>
+      <title>Energy markets open higher - Market Desk</title>
+      <link>https://news.google.com/rss/articles/example-two</link>
+      <pubDate>Sat, 26 Sep 2026 08:00:00 GMT</pubDate>
+      <source>Market Desk</source>
+    </item>
+  </channel>
+</rss>
