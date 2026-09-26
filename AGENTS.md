@@ -78,9 +78,7 @@ npm ci
 
 ### Run locally
 
-```text
-No dedicated npm local-run script is currently defined; use the Apify Actor runtime path when local execution is required.
-```
+No dedicated npm local-run script is currently defined. Use the Apify Actor runtime path when local execution is required.
 
 ### Validate
 
