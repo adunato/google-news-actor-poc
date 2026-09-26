@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 
-import { describe, expect, it } from "vitest";
+import { XMLParser } from "fast-xml-parser";
+import { describe, expect, it, vi } from "vitest";
 
 import { parseGoogleNewsFeed } from "./google-news-parser.js";
 
@@ -67,13 +68,54 @@ describe("parseGoogleNewsFeed", () => {
     });
   });
 
-  it("returns no results for malformed XML", () => {
-    expect(
+  it("throws a typed error for malformed XML", () => {
+    expect(() =>
       parseGoogleNewsFeed(fixture("google-news-malformed.xml"), context),
+    ).toThrowError(
+      expect.objectContaining({
+        name: "GoogleNewsFeedParseError",
+        category: "invalid-xml",
+      }),
+    );
+  });
+
+  it("throws a typed error for valid XML without an RSS channel", () => {
+    expect(() => parseGoogleNewsFeed("<root />", context)).toThrowError(
+      expect.objectContaining({
+        name: "GoogleNewsFeedParseError",
+        category: "missing-channel",
+      }),
+    );
+  });
+
+  it("returns no results for a valid RSS channel with no items", () => {
+    expect(
+      parseGoogleNewsFeed(
+        "<rss><channel><title>News</title></channel></rss>",
+        context,
+      ),
     ).toEqual([]);
   });
 
-  it("returns no results for valid XML without an RSS channel", () => {
-    expect(parseGoogleNewsFeed("<root />", context)).toEqual([]);
+  it("wraps parser exceptions in a typed feed parse error", () => {
+    const parse = vi
+      .spyOn(XMLParser.prototype, "parse")
+      .mockImplementationOnce(() => {
+        throw new Error("parser failure");
+      });
+
+    try {
+      expect(() =>
+        parseGoogleNewsFeed("<rss><channel /></rss>", context),
+      ).toThrowError(
+        expect.objectContaining({
+          name: "GoogleNewsFeedParseError",
+          category: "parser",
+          cause: expect.objectContaining({ message: "parser failure" }),
+        }),
+      );
+    } finally {
+      parse.mockRestore();
+    }
   });
 });
