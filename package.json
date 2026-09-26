@@ -4,11 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "format:check": "prettier --check README.md AGENTS.md docs .github package.json tsconfig.json eslint.config.js src",
+    "start": "node dist/index.js",
+    "format:check": "prettier --check README.md AGENTS.md docs .github .actor/actor.json .actor/input_schema.json .actor/output_schema.json .actor/dataset_schema.json scripts/actor-smoke.js package.json tsconfig.json eslint.config.js src",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "build": "tsc",
+    "actor:smoke": "npm run build && node scripts/actor-smoke.js",
     "validate": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "devDependencies": {

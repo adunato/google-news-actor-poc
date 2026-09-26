@@ -18,14 +18,26 @@ describe("native Actor schemas", () => {
     const properties = schema.properties as Record<string, SchemaProperty>;
 
     expect(schema.required).toEqual(["queries"]);
-    expect(properties.queries).toMatchObject({ minItems: 1, maxItems: 20 });
+    expect(properties.queries).toMatchObject({
+      minItems: 1,
+      maxItems: 20,
+      items: { minLength: 1, pattern: "\\S" },
+    });
     expect(properties.maxItemsPerQuery).toMatchObject({
       default: 20,
       minimum: 1,
       maximum: 100,
     });
-    expect(properties.language!.default).toBe("en-US");
-    expect(properties.country!.default).toBe("US");
+    expect(properties.language).toMatchObject({
+      default: "en-US",
+      minLength: 1,
+      pattern: "\\S",
+    });
+    expect(properties.country).toMatchObject({
+      default: "US",
+      minLength: 1,
+      pattern: "\\S",
+    });
     expect(properties.dateRange).toMatchObject({
       default: "7d",
       enum: ["any", "1h", "6h", "1d", "7d", "30d"],
