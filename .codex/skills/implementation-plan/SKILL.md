@@ -18,6 +18,7 @@ The skill prepares the plan and identifies unresolved implementation decisions; 
 ## Completion contract
 
 Report the plan path/ID, originating Issue, HLD reference or omission rationale, repository findings, implementation sequence, integrity/validation scope, explicit LLD decision and rationale, open questions, and approval state. Do not begin implementation while a material planning decision or required approval remains unresolved.
+
 ## Learning checkpoint
 
 Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

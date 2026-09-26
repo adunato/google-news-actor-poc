@@ -32,6 +32,7 @@ A flaky or external failure may be retried only when the evidence supports that 
 ## Completion contract
 
 Report the failing check/run, affected commit/PR/release, classification with evidence, reproduction result, corrective action taken or required, rerun status, related Issue, and whether the delivery gate is now green or remains blocked.
+
 ## Learning checkpoint
 
 Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

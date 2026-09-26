@@ -16,6 +16,7 @@ Structural validity is not substantive approval. The skill prepares the HLD and 
 ## Completion contract
 
 Report the artifact path/ID, originating Issue, product/architecture context used, material design decisions, validation considerations, durable-document impacts, unresolved questions, and approval state. A material unresolved design question or missing required owner approval keeps the HLD on hold.
+
 ## Learning checkpoint
 
 Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

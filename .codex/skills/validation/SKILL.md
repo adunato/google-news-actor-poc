@@ -16,6 +16,7 @@ If validation exposes a material product, architecture, scope, or design change,
 ## Completion report contract
 
 Report the Issue reference, validation performed and coverage, acceptance-criteria results, tests and reruns, every in-scope correction, outstanding failures classified as implementation/pre-existing/environment/intermittent, manual validation still required, and durable-document consistency. Explicitly state `No additional manual validation is required.` when applicable.
+
 ## Learning checkpoint
 
 Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

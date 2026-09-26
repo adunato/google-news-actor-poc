@@ -38,8 +38,8 @@ Run the complete repository validation suite with:
 
 Additional project commands:
 
-| Command | Purpose |
-| --- | --- |
+| Command     | Purpose   |
+| ----------- | --------- |
 | `<command>` | <Purpose> |
 
 <Remove the additional-command table if no other command materially helps development.>

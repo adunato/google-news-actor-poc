@@ -38,9 +38,9 @@
 
 ## 4. File Change Summary
 
-| File | Action | Purpose |
-| --- | --- | --- |
-| `<path>` | `<Modify | Create | Remove | Move>` | `<short description>` |
+| File     | Action   | Purpose |
+| -------- | -------- | ------- | ------ | ------ | --------------------- |
+| `<path>` | `<Modify | Create  | Remove | Move>` | `<short description>` |
 
 ### Completion contract
 
