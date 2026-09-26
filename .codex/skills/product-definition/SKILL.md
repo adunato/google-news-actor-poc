@@ -20,6 +20,7 @@ The skill prepares the artifact and identifies unresolved decisions. It must not
 ## Completion contract
 
 Report the Product Definition path/status, source decisions used, sections materially created or changed, stable requirements affected, unresolved product questions, originating Issue when applicable, and any explicit approval still required.
+
 ## Learning checkpoint
 
 Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

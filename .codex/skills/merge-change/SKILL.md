@@ -26,7 +26,7 @@ Do not stop after committing or pushing when no pull request exists. Pull-reques
 
 Do not bypass required CI, branch protection, or explicit human merge/promotion decisions. A coding agent prepares or updates the pull request but does not merge or promote its own change and must not claim that an unmerged pull request is integrated.
 
-After a human-approved merge is confirmed, verify the target state and remove the obsolete change worktree/branch only when safe. Preserve uncommitted or unintegrated work. The product repository's post-merge learning-dispatch workflow triggers central SideGig collection automatically; the product-repository agent must not copy learning records into or modify the SideGig repository itself.
+After a human-approved merge is confirmed, verify the pull request is merged into its intended target and its recorded head SHA matches the local branch HEAD. This confirms the branch contains no commits beyond the reviewed pull request, including when the target uses squash merging. Also verify the worktree is clean, then remove it with `git worktree remove <path>` and delete the local branch. If any check fails, preserve the worktree and branch; never force-remove a worktree. New worktrees use `<primary-checkout>/.worktrees/issue-<number>/`; resolve the primary checkout with `git worktree list --porcelain`, and adopt a suitable existing worktree outside that location in place rather than moving it. The product repository's post-merge learning-dispatch workflow triggers central SideGig collection automatically; the product-repository agent must not copy learning records into or modify the SideGig repository itself.
 
 ## Completion report contract
 

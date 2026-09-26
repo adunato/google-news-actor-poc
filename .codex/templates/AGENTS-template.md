@@ -24,7 +24,11 @@ Canonical project-local templates used by those skills are installed under:
 
 `.codex/templates/`
 
-Use the relevant skill instead of recreating lifecycle behaviour ad hoc. The installed package covers repository bootstrap, durable product/architecture definition, Issue refinement, proportional change assessment, workspace/design/planning, development, validation, CI diagnosis, integration, release preparation, staging validation, production promotion and learning capture.
+Bootstrap and repository-management utilities used by those skills are installed under:
+
+`.codex/tools/`
+
+Use the relevant skill and installed tool instead of recreating lifecycle behaviour ad hoc. The installed package covers repository bootstrap, durable product/architecture definition, Issue refinement, proportional change assessment, workspace/design/planning, development, validation, CI diagnosis, integration, release preparation, staging validation, production promotion and learning capture.
 
 ## Development lifecycle
 

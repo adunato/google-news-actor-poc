@@ -43,6 +43,7 @@ If the Issue itself is not ready, return to Issue refinement rather than compens
 ## Completion contract
 
 Report the Issue, readiness state, HLD decision and rationale, Implementation Plan decision and rationale, LLD status, likely durable Product/Architecture impact, material risks/dependencies, and the exact next lifecycle step. Confirm that the Issue's `Development Lifecycle Assessment` section has been updated when write access is available.
+
 ## Learning checkpoint
 
 Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

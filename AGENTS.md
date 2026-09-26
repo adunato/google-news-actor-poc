@@ -16,33 +16,37 @@ The GitHub Issue remains the root traceability object. Do not expand its scope s
 
 ## Agent package
 
-Reusable SideGig skills are installed under `.codex/skills/` and canonical project-local templates are installed under `.codex/templates/`. Use the relevant skill instead of recreating lifecycle behaviour ad hoc.
+Reusable SideGig skills are installed under:
 
-## Project commands
+`.codex/skills/`
 
-### Install
+Canonical project-local templates used by those skills are installed under:
 
-```text
-npm ci
-```
+`.codex/templates/`
 
-### Run locally
+Bootstrap and repository-management utilities used by those skills are installed under:
 
-The Actor runtime is not implemented yet.
+`.codex/tools/`
 
-### Validate
+Use the relevant skill and installed tool instead of recreating lifecycle behaviour ad hoc. The installed package covers repository bootstrap, durable product/architecture definition, Issue refinement, proportional change assessment, workspace/design/planning, development, validation, CI diagnosis, integration, release preparation, staging validation, production promotion and learning capture.
 
-```text
-npm run validate
-```
+## Development lifecycle
 
-The validation command is the repository-wide local quality contract and is also invoked by CI.
+Before implementation, ensure the Issue is development-ready. Use `refine-issue` when requirements or acceptance criteria need shaping, and `assess-change` to choose the minimum proportional design/planning path.
 
-## Project-specific constraints
+Create change-specific design artifacts only when required:
 
-- Preserve the Step 7 Google News metadata-search boundary: one source, lightweight HTTP/feed access, structured metadata, and Apify-native dataset/API delivery.
-- Do not add canonical publisher URL resolution, full article extraction, browser scraping, residential proxies, paid external data APIs, stateful monitoring, AI enrichment, or multi-source aggregation without a new approved decision.
-- Do not start implementation work without an Issue and the proportional SideGig design/planning path.
+- `hld.md` for a material change-design decision;
+- `implementation-plan.md` for meaningful repository-level implementation planning;
+- `low-level-design.md` only when an approved implementation plan requires file-level design.
+
+When required, store these under:
+
+`docs/changes/<issue-number>/`
+
+Use the canonical copies in `.codex/templates/` when creating those artifacts.
+
+Update `docs/product.md` or `docs/architecture.md` in the same change when the implemented outcome materially changes the durable product or architecture.
 
 ## Learning capture
 
@@ -54,4 +58,40 @@ Product-specific lessons may be resolved through normal local artifacts and chan
 
 ## Git and integration
 
-Normal change branches are based on `dev`; do not push normal changes directly to `dev`, `staging` or `main`. After validation, use `merge-change` to commit all intended changes, push the source branch, and create or update the pull request; do not stop after a branch push when no pull request exists. Pull requests must include Issue, design, validation, durable-document and learning-record traceability. Do not bypass required CI or branch protection, and do not merge or promote your own change.
+- Normal change branches are based on `dev`.
+- Follow the repository branch naming defined by the SideGig GitHub Delivery Model.
+- Do not push normal changes directly to `dev`, `staging` or `main`.
+- After validation, use `merge-change` to commit all intended changes, push the source branch, and create or update the pull request. Do not stop after a branch push when no pull request exists.
+- Pull requests must include Issue, design, validation, durable-document and learning-record traceability.
+- Use `ci-diagnostics` for failed automated gates rather than weakening checks.
+- Do not bypass required CI or branch protection.
+- Do not merge or promote your own change; those remain explicit human actions.
+- Use the release skills for candidate preparation, staging validation and production promotion where applicable.
+
+## Project commands
+
+### Install
+
+```text
+npm ci
+```
+
+### Run locally
+
+```text
+No dedicated npm local-run script is currently defined; use the Apify Actor runtime path when local execution is required.
+```
+
+### Validate
+
+```text
+npm run validate
+```
+
+The validation command is the repository-wide local quality contract and should match the checks used by CI.
+
+## Project-specific constraints
+
+- Preserve the Step 7 Google News metadata-search boundary: one source, lightweight HTTP/feed access, structured metadata, and Apify-native dataset/API delivery.
+- Do not add canonical publisher URL resolution, full article extraction, browser scraping, residential proxies, paid external data APIs, stateful monitoring, AI enrichment, or multi-source aggregation without a new approved decision.
+- Do not start implementation work without an Issue and the proportional SideGig design/planning path.
