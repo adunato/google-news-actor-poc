@@ -27,6 +27,24 @@ export interface GoogleNewsFeedContext {
   scrapedAt: string;
 }
 
+export type GoogleNewsFeedParseErrorCategory =
+  "invalid-xml" | "parser" | "missing-channel";
+
+export class GoogleNewsFeedParseError extends Error {
+  readonly category: GoogleNewsFeedParseErrorCategory;
+
+  constructor(
+    category: GoogleNewsFeedParseErrorCategory,
+    options: { cause?: unknown } = {},
+  ) {
+    super(`Google News feed could not be parsed (${category})`, {
+      cause: options.cause,
+    });
+    this.name = "GoogleNewsFeedParseError";
+    this.category = category;
+  }
+}
+
 type XmlRecord = Record<string, unknown>;
 
 function isRecord(value: unknown): value is XmlRecord {
@@ -74,11 +92,15 @@ function stripHtml(value: string): string | undefined {
   }
 }
 
-function getItems(xml: unknown): unknown[] {
+function getChannel(xml: unknown): XmlRecord {
   if (!isRecord(xml) || !isRecord(xml.rss) || !isRecord(xml.rss.channel)) {
-    return [];
+    throw new GoogleNewsFeedParseError("missing-channel");
   }
-  const items = xml.rss.channel.item;
+  return xml.rss.channel;
+}
+
+function getItems(channel: XmlRecord): unknown[] {
+  const items = channel.item;
   if (Array.isArray(items)) return items;
   return items === undefined ? [] : [items];
 }
@@ -135,15 +157,24 @@ export function parseGoogleNewsFeed(
   body: string,
   context: GoogleNewsFeedContext,
 ): NewsResult[] {
-  if (XMLValidator.validate(body) !== true) return [];
+  let isValidXml: ReturnType<typeof XMLValidator.validate>;
+  try {
+    isValidXml = XMLValidator.validate(body);
+  } catch (error) {
+    throw new GoogleNewsFeedParseError("invalid-xml", { cause: error });
+  }
+  if (isValidXml !== true) {
+    throw new GoogleNewsFeedParseError("invalid-xml");
+  }
+
   let document: unknown;
   try {
     document = parser.parse(body);
-  } catch {
-    return [];
+  } catch (error) {
+    throw new GoogleNewsFeedParseError("parser", { cause: error });
   }
 
-  return getItems(document).flatMap((item, index) => {
+  return getItems(getChannel(document)).flatMap((item, index) => {
     const normalized = parseItem(item, context, index + 1);
     return normalized ? [normalized] : [];
   });
