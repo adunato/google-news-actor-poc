@@ -5,6 +5,7 @@
   "description": "Search Google News and return bounded, structured result metadata.",
   "version": "0.1",
   "buildTag": "latest",
+  "defaultMemoryMbytes": 256,
   "dockerfile": "./Dockerfile",
   "readme": "../README.md",
   "input": "./input_schema.json",
