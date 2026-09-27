@@ -13,36 +13,44 @@ function readSchema(name: string): JsonObject {
 }
 
 describe("native Actor schemas", () => {
-  it("describes the runtime input defaults and bounds", () => {
+  it("describes the runtime input defaults, bounds, and Apify editors", () => {
     const schema = readSchema("input_schema.json");
     const properties = schema.properties as Record<string, SchemaProperty>;
 
     expect(schema.required).toEqual(["queries"]);
     expect(properties.queries).toMatchObject({
+      editor: "stringList",
       minItems: 1,
       maxItems: 20,
       items: { minLength: 1, pattern: "\\S" },
     });
     expect(properties.maxItemsPerQuery).toMatchObject({
+      editor: "number",
       default: 20,
       minimum: 1,
       maximum: 100,
     });
     expect(properties.language).toMatchObject({
+      editor: "textfield",
       default: "en-US",
       minLength: 1,
       pattern: "\\S",
     });
     expect(properties.country).toMatchObject({
+      editor: "textfield",
       default: "US",
       minLength: 1,
       pattern: "\\S",
     });
     expect(properties.dateRange).toMatchObject({
+      editor: "select",
       default: "7d",
       enum: ["any", "1h", "6h", "1d", "7d", "30d"],
     });
-    expect(properties.dedupe!.default).toBe(true);
+    expect(properties.dedupe).toMatchObject({
+      editor: "checkbox",
+      default: true,
+    });
   });
 
   it("describes the normalized result contract and default dataset output", () => {
