@@ -1,0 +1,15 @@
+<rss version="2.0">
+  <channel>
+    <item>
+      <title>Missing publication time - Example News</title>
+      <link>https://news.google.com/rss/articles/incomplete</link>
+      <source>Example News</source>
+    </item>
+    <item>
+      <title>Valid item after an incomplete item - Example News</title>
+      <link>https://news.google.com/rss/articles/after-incomplete</link>
+      <pubDate>Sat, 26 Sep 2026 07:00:00 GMT</pubDate>
+      <source>Example News</source>
+    </item>
+  </channel>
+</rss>

@@ -19,8 +19,8 @@
 
 ## 3. Components and Responsibilities
 
-| Component | Responsibility |
-| --- | --- |
+| Component   | Responsibility                   |
+| ----------- | -------------------------------- |
 | <component> | <what it owns and why it exists> |
 
 ## 4. Principal Flows
@@ -36,8 +36,8 @@
 
 ## 5. Interfaces and Integrations
 
-| Interface / integration | Purpose | Direction / contract |
-| --- | --- | --- |
+| Interface / integration                                     | Purpose         | Direction / contract               |
+| ----------------------------------------------------------- | --------------- | ---------------------------------- |
 | <API, event, platform, service, CLI, Actor interface, etc.> | <why it exists> | <important architectural contract> |
 
 ## 6. Data and State

@@ -32,3 +32,7 @@ A candidate is promotion-ready only when every required staging check is passed 
 ## Completion contract
 
 Report the release candidate/version, deployed staging identity, checks executed, automated/manual evidence, failures and their classification, Bug Issues created or referenced, retest results, remaining blockers, and the explicit staging validation result: `Pass` or `Hold`.
+
+## Learning checkpoint
+
+Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.

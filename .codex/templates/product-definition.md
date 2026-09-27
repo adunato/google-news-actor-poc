@@ -36,16 +36,16 @@
 
 ## 4. Product Capabilities
 
-| Capability | Description |
-| --- | --- |
+| Capability   | Description                    |
+| ------------ | ------------------------------ |
 | <capability> | <what the product must enable> |
 
 ## 5. Product Requirements and Behaviour
 
 Use stable requirement IDs where they materially improve traceability. Keep requirements behavioural and implementation-independent.
 
-| ID | Requirement |
-| --- | --- |
+| ID       | Requirement                  |
+| -------- | ---------------------------- |
 | `PR-001` | <required product behaviour> |
 
 ## 6. External Interaction and Contract

@@ -36,3 +36,7 @@ If preparation reveals a release blocker, leave the candidate unpromoted and rep
 ## Completion contract
 
 Report the version/milestone, selected `dev` commit and CI state, release-branch name/commit, included Issues/PRs, excluded or blocking work, staging-promotion PR URL/ID, candidate readiness, and required human action.
+
+## Learning checkpoint
+
+Before completing this skill, consider whether execution exposed a reusable lesson about the product, Development Operating Model, a skill/template, tooling/CI, or the implementation methodology. A normal defect or one-off execution problem is not automatically a learning. When a reusable lesson exists, use `capture-learning` to record it under `docs/learnings/`; otherwise report `Learnings: None`. A learning that requires SideGig-level change must be recorded for later SideGig review rather than changing cross-project standards from the product repository.
