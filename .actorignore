@@ -1,0 +1,4 @@
+# Local Apify validation artefacts
+apify-validation-output/
+apify-test-input.json
+apify-validation-dump*.bat
