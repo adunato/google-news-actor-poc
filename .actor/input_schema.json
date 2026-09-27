@@ -21,6 +21,7 @@
       "title": "Maximum results per query",
       "type": "integer",
       "description": "Maximum number of metadata records returned for each query.",
+      "editor": "number",
       "default": 20,
       "minimum": 1,
       "maximum": 100
@@ -29,6 +30,7 @@
       "title": "Language",
       "type": "string",
       "description": "Google News language/locale code.",
+      "editor": "textfield",
       "default": "en-US",
       "minLength": 1,
       "pattern": "\\S"
@@ -37,6 +39,7 @@
       "title": "Country",
       "type": "string",
       "description": "Google News country or edition code.",
+      "editor": "textfield",
       "default": "US",
       "minLength": 1,
       "pattern": "\\S"
@@ -45,6 +48,7 @@
       "title": "Date range",
       "type": "string",
       "description": "Bounded recency window applied to each Google News search.",
+      "editor": "select",
       "default": "7d",
       "enum": ["any", "1h", "6h", "1d", "7d", "30d"]
     },
@@ -52,6 +56,7 @@
       "title": "Deduplicate results",
       "type": "boolean",
       "description": "Whether results with the same Google News URL are deduplicated across queries.",
+      "editor": "checkbox",
       "default": true
     }
   },
