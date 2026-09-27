@@ -13,6 +13,12 @@ function readSchema(name: string): JsonObject {
 }
 
 describe("native Actor schemas", () => {
+  it("pins the validated default Actor memory", () => {
+    const actor = readSchema("actor.json");
+
+    expect(actor.defaultMemoryMbytes).toBe(256);
+  });
+
   it("describes the runtime input defaults, bounds, and Apify editors", () => {
     const schema = readSchema("input_schema.json");
     const properties = schema.properties as Record<string, SchemaProperty>;
